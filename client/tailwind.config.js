@@ -6,7 +6,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#35496D',
         secondary: '#2D3B48',
         green: '#046A1D',
         blue: '#3E80FC',
@@ -14,6 +13,11 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    'text-green',
+    'text-blue',
+    'text-pink'
+  ],
   plugins: [],
 }
 
