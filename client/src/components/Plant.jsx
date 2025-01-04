@@ -17,11 +17,11 @@ function Plant({name, color, temperature, temperaturePrecent, soilMoisture}) {
   );
 
   return (
-    <div className={`h-3/4 flex flex-col mt-5 gap-2 text font-semibold italic text-${color}`}>
-      <div className="w-[23rem] h-12 bg-secondary flex justify-center items-center rounded-md">
+    <div className={`w-[85%] md:w-[350px] flex flex-col gap-2 text font-semibold italic text-${color}`}>
+      <div className="w-full h-12 bg-secondary flex justify-center items-center rounded-md">
         <h2 className="italic text-2xl">{name}</h2>
       </div>
-      <div className="h-full flex justify-center gap-5">
+      <div className="h-[270px] flex justify-center gap-5">
         <div className="bg-secondary h-full w-[42.5%] rounded-md flex flex-col items-center justify-between">
           <div className="flex flex-col items-center">
             <h2 className="text-xl">Temperatura</h2>

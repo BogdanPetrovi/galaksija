@@ -61,10 +61,10 @@ function Chart({time, data0, data1, data2, isMoisture}) {
         ...(isMoisture && { min:0, max:100 })
       }
     },
-    maintainAspectRatio: false
+    maintainAspectRatio: false,
   }
   return (
-    <Line options={options} data={data} />
+    <Line options={options} data={data} height={"100%"} width={"100%"} />
   )
 }
 
