@@ -11,7 +11,7 @@ ChartJS.register(
   Tooltip
 )
 
-function Chart({time, data0, data1, data2, isMoisture}) {
+function Chart({header, time, data0, data1, data2, isMoisture}) {
   const data = {
     labels: time,
     datasets: [
@@ -64,7 +64,12 @@ function Chart({time, data0, data1, data2, isMoisture}) {
     maintainAspectRatio: false,
   }
   return (
-    <Line options={options} data={data} height={"100%"} width={"100%"} />
+    <div className="w-[85%] md:w-[45%] lg:w-[35%] xl:w-[25%] h-[370px] bg-secondary p-3 pb-[2.5rem]">
+      <h2 className='font-semibold italic text-2xl mb-2'>{header}</h2>
+      <div className='h-[300px]'>
+        <Line options={options} data={data} height={"100%"} width={"100%"} />
+      </div>
+    </div>
   )
 }
 
