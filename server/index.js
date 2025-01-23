@@ -20,7 +20,7 @@ app.get('/get-device-data', async (req, res) => {
   try {
     const mac = req.body.mac; // Ovo ce se citati iz kolacica, ali za sad ovako
     // Uzimam samo odredjene kolone i stitim da korisnik nikad ne moze da vidi IP adresu korisnika
-    const data = await db.query('SELECT id, vreme, temperatura, vlaznost FROM informacije WHERE mac = ? ORDER BY vreme DESC ;', ["7C-10-C9-20-9F-66"])
+    const data = await db.query('SELECT id, vreme, temperatura, vlaznost FROM informacije WHERE mac = ? ORDER BY vreme DESC ;', [mac])
     // Potvrdjujemo klijentu da je sve proslo kako treba i saljemo mu podatke
     res.status(200).json({"status": "success", "data": data[0]})
   } catch (err) {
