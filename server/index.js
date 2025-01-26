@@ -4,6 +4,7 @@ require('dotenv').config();
 var morgan = require('morgan');
 var bodyParser = require('body-parser')
 const db = require('./db/database')
+const mqtt = require('mqtt')
 
 const app = express();
 const port = process.env.PORT;
@@ -13,6 +14,20 @@ app.use(bodyParser.json())
 app.use(cors({
   optionsSuccessStatus: 200,
 }));
+
+const options = {
+  username: process.env.MQTTUSERNAME,
+  password: process.env.MQTTPASSWORD,
+};
+const mqttUrl = process.env.MQTTURL;
+
+const client = mqtt.connect(mqttUrl, options);
+
+app.get('/water-the-plant', (req,res) => {
+  const plant = req.body.plant;
+  client.publish('test', plant)
+  res.status(200).send(`Upsensno ste zalili biljku "${plant}"`)
+})
 
 app.get('/get-device-data', async (req, res) => {
   try {
