@@ -29,7 +29,7 @@ app.get('/water-the-plant', (req,res) => {
   res.status(200).send(`Upsensno ste zalili biljku "${plant}"`)
 })
 
-app.get('/get-device-data', async (req, res) => {
+app.post('/get-device-data', async (req, res) => {
   try {
     const mac = req.body.mac;
     const data = await db.query('SELECT id, vreme, temperatura, vlaznost FROM informacije WHERE mac = ? ORDER BY vreme DESC ;', [mac])

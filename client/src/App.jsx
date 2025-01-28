@@ -1,22 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.css'
 import Plant from './components/Plant'
 import Chart from './components/Chart'
 import Events from './components/Events'
+import db from './api/backend'
 
 function App() {
+  const [sensorA, setSensorA] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      const result = await db.post('/get-device-data', {
+        mac: "7C-10-C9-20-9F-66"
+      });
+      setSensorA(result.data.data);
+    }
+
+    getData();
+  }, [])
+
   return (
     <div className='min-h-screen w-screen flex flex-col mt-5 xl:mt-0 overflow-x-hidden'>
       <div className="w-full flex flex-grow items-center">
         <div className="w-full flex flex-wrap gap-8 justify-center">
-          <Plant 
-            name={'Biljka A'}
-            color={'green'} 
-            temperature={'18.5'}
-            temperaturePrecent={'65'}
-            soilMoisture={'35.2'}
-          />
-          <Plant 
+          {sensorA.length > 0 && 
+            <Plant 
+              name={'Biljka A'}
+              color={'green'} 
+              latestInfo={sensorA[0]}
+            />
+          }
+          {/* <Plant 
             name={'Biljka B'}
             color={'pink'} 
             temperature={'20'}
@@ -29,7 +43,7 @@ function App() {
             temperature={'15.6'}
             temperaturePrecent={'55'}
             soilMoisture={'52.2'}
-          />
+          /> */}
         </div>
       </div>
 

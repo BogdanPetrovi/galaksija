@@ -1,6 +1,7 @@
 import React from 'react'
 
-function Plant({name, color, temperature, temperaturePrecent, soilMoisture}) {
+function Plant({name, color, latestInfo}) {
+
   const getStyle = (percentage) => ({
     height: `${percentage}%`,
     width: '100%',
@@ -25,19 +26,19 @@ function Plant({name, color, temperature, temperaturePrecent, soilMoisture}) {
         <div className="bg-secondary h-full w-[42.5%] rounded-md flex flex-col items-center justify-between">
           <div className="flex flex-col items-center">
             <h2 className="text-xl">Temperatura</h2>
-            <h2 className="not-italic text-3xl">{temperature}°C</h2>
+            <h2 className="not-italic text-3xl">{latestInfo.temperatura}°C</h2>
           </div>
           <div style={{backgroundColor: getBackgroundColor()}} className="h-[70%] w-2/3 mb-2 flex items-end rounded-md">
-            <div style={getStyle(temperaturePrecent)} />
+            <div style={getStyle("60")} />
           </div>
         </div>
         <div className="bg-secondary h-full w-[42.5%] rounded-md flex flex-col items-center justify-between">
           <div className="flex flex-col items-center">
             <h2 className="text-xl">Vlaznost</h2>
-            <h2 className="not-italic text-3xl">{soilMoisture}%</h2>
+            <h2 className="not-italic text-3xl">{latestInfo.vlaznost}%</h2>
           </div>
           <div style={{backgroundColor: getBackgroundColor()}} className="h-[70%] w-2/3 mb-2 flex items-end rounded-md">
-            <div style={getStyle(soilMoisture)} />
+            <div style={getStyle(latestInfo.vlaznost)} />
           </div>
         </div>
       </div>
