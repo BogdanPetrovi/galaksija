@@ -6,7 +6,7 @@ var bodyParser = require('body-parser')
 const db = require('./db/database')
 const mqtt = require('mqtt')
 
-const app = express();
+const app = express()
 const port = process.env.PORT;
 
 app.use(morgan('dev'));
