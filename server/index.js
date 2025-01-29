@@ -24,7 +24,7 @@ const mqttUrl = process.env.MQTTURL;
 const client = mqtt.connect(mqttUrl, options);
 
 app.get('/water-the-plant', (req,res) => {
-  const plant = req.body.plant;
+  const plant = req.params.plant;
   client.publish('test', plant)
   res.status(200).send(`Upsensno ste zalili biljku "${plant}"`)
 })
