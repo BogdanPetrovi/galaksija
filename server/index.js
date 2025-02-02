@@ -42,9 +42,12 @@ app.post('/get-device-data', async (req, res) => {
 
 app.post('/add-device-data', async (req, res) => {
   try {
-    const data = req.body.data;
+    const mac = req.query.mac;
+    const senzor = req.query.senzor;
+    const temperatura = req.query.temperatura;
+    const vlaznost = req.query.vlaznost
     await db.query('INSERT INTO informacije (mac, senzor, temperatura, vlaznost) VALUES (?, ?, ?, ?);',
-    [data.mac, data.senzor, data.temperatura, data.vlaznost]);
+    [mac, senzor, temperatura, vlaznost]);
     res.status(200).json({"status": "success", "message": "Inserted data succesfully"})
   } catch (err) {
     console.log(err)
