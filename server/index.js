@@ -40,18 +40,18 @@ app.post('/get-device-data', async (req, res) => {
   }
 })
 
-app.post('/add-device-data', async (req, res) => {
+app.get('/add-device-data', async (req, res) => {
   try {
     const mac = req.query.mac;
     const senzor = req.query.senzor;
     const temperatura = req.query.temperatura;
     const vlaznost = req.query.vlaznost
-    await db.query('INSERT INTO informacije (mac, senzor, temperatura, vlaznost) VALUES (?, ?, ?, ?);',
+    const result = await db.query('INSERT INTO informacije (mac, senzor, temperatura, vlaznost) VALUES (?, ?, ?, ?);',
     [mac, senzor, temperatura, vlaznost]);
     res.status(200).json({"status": "success", "message": "Inserted data succesfully"})
   } catch (err) {
     console.log(err)
-    res.status(402).json({"status": "failure", "message": err.sqlMessage || 'Server error or bad request'})
+    res.status(401).json({"status": "failure", "message": err.sqlMessage || 'Server error or bad request'})
   }
 })
 
