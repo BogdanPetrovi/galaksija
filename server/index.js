@@ -51,7 +51,7 @@ app.post('/add-device-data', async (req, res) => {
     res.status(200).json({"status": "success", "message": "Inserted data succesfully"})
   } catch (err) {
     console.log(err)
-    res.status(400).json({"status": "failure", "message": err.sqlMessage || 'Server error or bad request'})
+    res.status(402).json({"status": "failure", "message": err.sqlMessage || 'Server error or bad request'})
   }
 })
 
