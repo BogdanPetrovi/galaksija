@@ -8,9 +8,9 @@ function LogIn() {
   function submit() {
     const getCookie = async () => {
       try {
-        console.log(mac.length)
         if(mac.length === 17){
-          await db.post('/update-mac', {"mac": mac})
+          const result = await db.post('/update-mac', {"mac": mac})
+          console.log(result)
           window.location.reload();
         } else {
           setErr('Niste dobro uneli MAC adresu vašeg uredjaja!')

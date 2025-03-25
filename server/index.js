@@ -83,6 +83,7 @@ app.post('/update-mac', (req,res) => {
     httpOnly: true,
     secure: true,
     maxAge: 1000 * 60 * 60 * 24 * 7 * 4,
+    sameSite: 'none'
   });
 
   res.send({message: "Success"})
