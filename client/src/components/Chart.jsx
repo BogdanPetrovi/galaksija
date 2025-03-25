@@ -21,18 +21,18 @@ function Chart({header, time, data0, data1, data2, isMoisture}) {
         backgroundColor: '#046A1D',
         borderColor: '#046A1D'
       },
-      {
-        label: "Biljka B",
-        data: data1,
-        backgroundColor: '#CB1BAB',
-        borderColor: '#CB1BAB'
-      },
-      {
-        label: "Biljka C",
-        data: data2,
-        backgroundColor: '#3E80FC', 
-        borderColor: '#3E80FC'
-      }
+      // {
+      //   label: "Biljka B",
+      //   data: data1,
+      //   backgroundColor: '#CB1BAB',
+      //   borderColor: '#CB1BAB'
+      // },
+      // {
+      //   label: "Biljka C",
+      //   data: data2,
+      //   backgroundColor: '#3E80FC', 
+      //   borderColor: '#3E80FC'
+      // }
     ]
   }
 
