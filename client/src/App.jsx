@@ -22,7 +22,6 @@ function App() {
         if(mac.data.mac){
           setIsLoggedIn(true)
           const result = await getData("B", mac.data.mac);
-          console.log(result)
           setLatestData(result.data.data[0]);
           const temperatures = mapFunction(result.data.data, "temperatura")
           setTemperature(temperatures)

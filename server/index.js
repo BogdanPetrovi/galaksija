@@ -14,8 +14,8 @@ const port = process.env.PORT;
 app.use(morgan('dev'));
 app.use(bodyParser.json())
 app.use(cors({
-  origin: 'http://localhost:3000',
-  // origin: 'https://galaksija-nine.vercel.app',
+  // origin: 'http://localhost:3000',
+  origin: 'https://galaksija-nine.vercel.app',
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200
@@ -30,9 +30,9 @@ const mqttUrl = process.env.MQTTURL;
 const client = mqtt.connect(mqttUrl, options);
 
 app.post('/water-the-plant', (req,res) => {
-  const plant = req.body.plant;
-  client.publish('poruka', plant)
-  res.status(200).send(`Upsensno ste zalili biljku "${plant}"`)
+  const message = req.body.message;
+  client.publish('poruka', message)
+  res.status(200).send(`Success`)
 })
 
 app.get('/sensor-data', async (req, res) => {

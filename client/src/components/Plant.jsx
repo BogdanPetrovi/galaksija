@@ -1,35 +1,7 @@
 import React from 'react'
+import { getStyle, getTemperatureHeight, getBackgroundColor, water } from './functions/plantFunctions'
 
 function Plant({name, color, data}) {
-  const getStyle = (percentage) => ({
-    height: `${percentage}%`,
-    width: '100%',
-    borderRadius: '0.375rem',
-    backgroundColor: color === 'green' ? '#046A1D' : 
-                    color === 'blue' ? '#3E80FC' : 
-                    '#CB1BAB'
-  });
-
-  const getTemperatureHeight = (value) => {
-    if(value > 15){
-      if(value < 25){
-        const diff = (value - 15) * 10;
-        return diff
-      }
-      else {
-        return 100;
-      }
-    } else {
-      return 0;
-    }
-  }
-
-  const getBackgroundColor = () => (
-    color === 'green' ? '#01370E' :
-    color === 'blue' ? '#263E6A' :
-    '#782068'
-  );
-
   return (
     (data && 
       <div className={`w-[85%] md:w-[350px] flex flex-col gap-2 text font-semibold italic text-${color}`}>
@@ -42,8 +14,8 @@ function Plant({name, color, data}) {
               <h2 className="text-xl">Temperatura</h2>
               <h2 className="not-italic text-3xl">{data.temperatura}°C</h2>
             </div>
-            <div style={{backgroundColor: getBackgroundColor()}} className="h-[70%] w-2/3 mb-2 flex items-end rounded-md">
-              <div style={getStyle(getTemperatureHeight(data.temperatura))} />
+            <div style={{backgroundColor: getBackgroundColor(color)}} className="h-[70%] w-2/3 mb-2 flex items-end rounded-md">
+              <div style={getStyle(getTemperatureHeight(data.temperatura), color)} />
             </div>
           </div>
           <div className="bg-secondary h-full w-[42.5%] rounded-md flex flex-col items-center justify-between">
@@ -51,10 +23,13 @@ function Plant({name, color, data}) {
               <h2 className="text-xl">Vlažnost</h2>
               <h2 className="not-italic text-3xl">{data.vlaznost}%</h2>
             </div>
-            <div style={{backgroundColor: getBackgroundColor()}} className="h-[70%] w-2/3 mb-2 flex items-end rounded-md">
-              <div style={getStyle(data.vlaznost)} />
+            <div style={{backgroundColor: getBackgroundColor(color)}} className="h-[70%] w-2/3 mb-2 flex items-end rounded-md">
+              <div style={getStyle(data.vlaznost, color)} />
             </div>
           </div>
+        </div>
+        <div className='flex justify-center items-center'>
+          <div className='w-2/5 bg-slate-900 text-4xl font-semibold text-white p-2 rounded-xl text-center cursor-pointer hover:bg-slate-800 duration-500' onClick={water}>Zalij</div>
         </div>
       </div>
     )
