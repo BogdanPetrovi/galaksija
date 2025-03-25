@@ -80,7 +80,8 @@ app.post('/update-mac', (req,res) => {
   const mac = req.body.mac;
 
   res.cookie('usrid', encrypt(mac) , {
-    httpOnly: true,
+    // httpOnly: true,
+    secure: true,
     maxAge: 1000 * 60 * 60 * 24 * 7 * 4,
   });
 
