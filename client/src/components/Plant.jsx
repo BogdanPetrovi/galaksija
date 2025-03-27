@@ -1,7 +1,13 @@
-import React from 'react'
-import { getStyle, getTemperatureHeight, getBackgroundColor, water } from './functions/plantFunctions'
+import React, { useEffect, useState } from 'react'
+import { getStyle, getTemperatureHeight, getBackgroundColor, water, stop } from './functions/plantFunctions'
 
 function Plant({name, color, data}) {
+  const [isR, setIsR] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', stop);
+  }, [])
+
   return (
     (data && 
       <div className={`w-[85%] md:w-[350px] flex flex-col gap-2 text font-semibold italic text-${color}`}>
@@ -28,9 +34,19 @@ function Plant({name, color, data}) {
             </div>
           </div>
         </div>
-        <div className='flex justify-center items-center'>
-          <div className='w-2/5 bg-slate-900 text-4xl font-semibold text-white p-2 rounded-xl text-center cursor-pointer hover:bg-slate-800 duration-500' onClick={water}>Zalij</div>
-        </div>
+        {
+          isR ?
+          (
+            <div className='flex justify-center items-center'>
+              <div className='w-3/5 bg-red-600 text-4xl font-semibold text-white p-2 rounded-xl text-center cursor-pointer select-none hover:bg-red-500 duration-500' onClick={() => {stop(); setIsR(false)}}>Prestani zalivanje</div>
+            </div>
+          ) :
+          (
+            <div className='flex justify-center items-center' >
+              <div className='w-2/5 bg-slate-900 text-4xl font-semibold text-white p-2 rounded-xl text-center cursor-pointer select-none hover:bg-slate-800 duration-500' onClick={() => {water(); setIsR(true)}}>Zalij</div>
+            </div>
+          )
+        }
       </div>
     )
     

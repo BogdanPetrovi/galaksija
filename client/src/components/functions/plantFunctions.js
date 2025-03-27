@@ -31,15 +31,18 @@ const getBackgroundColor = (color) => (
 
 const water = async () => {
   try {
-    const result = await db.post('/water-the-plant', {message: '11'})
-    if(result.status === 200){
-      console.log('Uspesno zaliveno')
-    } else {
-      console.log('Nije uspesno zaliveno')
-    }
+    await db.post('/water-the-plant', {message: '11'})
   } catch (err) {
     console.log(err)
   }
 }
 
-export {getStyle, getTemperatureHeight, getBackgroundColor, water}
+const stop = async () => {
+  try {
+    await db.post('/water-the-plant', {message: '10'})
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export {getStyle, getTemperatureHeight, getBackgroundColor, water, stop}

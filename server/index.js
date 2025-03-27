@@ -76,6 +76,11 @@ app.get('/get-mac', (req, res) => {
   }
 })
 
+app.post('/clear-cookie', (req, res) => {
+  res.clearCookie('usrid');
+  res.status(200).json({"status": "success"})
+})
+
 app.post('/update-mac', (req,res) => {
   const mac = req.body.mac;
 
