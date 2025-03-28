@@ -6,7 +6,7 @@ import Chart from '../components/Chart'
 function HomePage({ latestData, temperature, moisture, time }) {
   return (
     <div className='min-h-screen w-screen flex flex-col mt-5 xl:mt-0 overflow-x-hidden'>
-      <div className="w-full flex flex-grow items-center">
+      <div className="w-full flex flex-grow items-center mt-6">
         <div className="w-full flex flex-wrap gap-8 justify-center">
           <Plant 
             name='Biljka A'
