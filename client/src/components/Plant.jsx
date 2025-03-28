@@ -38,12 +38,12 @@ function Plant({name, color, data}) {
           isR ?
           (
             <div className='flex justify-center items-center'>
-              <div className='w-3/5 bg-red-600 text-4xl font-semibold text-white p-2 rounded-xl text-center cursor-pointer select-none hover:bg-red-500 duration-500' onClick={() => {stop(); setIsR(false)}}>Prestani zalivanje</div>
+              <div className='w-3/5 bg-red-600 text-4xl font-semibold text-white p-2 rounded-xl text-center cursor-pointer select-none hover:bg-red-500 duration-500' onClick={() => {stop(); setIsR(false)}}>Zaustavi</div>
             </div>
           ) :
           (
             <div className='flex justify-center items-center' >
-              <div className='w-2/5 bg-slate-900 text-4xl font-semibold text-white p-2 rounded-xl text-center cursor-pointer select-none hover:bg-slate-800 duration-500' onClick={() => {water(); setIsR(true)}}>Zalij</div>
+              <div className='w-3/5 bg-slate-900 text-4xl font-semibold text-white p-2 rounded-xl text-center cursor-pointer select-none hover:bg-slate-800 duration-500' onClick={() => {water(); setIsR(true)}}>Pokreni</div>
             </div>
           )
         }
